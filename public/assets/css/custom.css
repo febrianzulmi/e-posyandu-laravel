@@ -1,0 +1,38 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.hero {
+    height: 250px;
+    background: -webkit-linear-gradient(-148deg, #ae0b1a, #d20d48);
+    background-image: url('../img/hero.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.font-weight-light {
+    font-weight: 300 !important;
+}
+
+.font-weight-bold {
+    font-weight: 600 !important;
+}
+
+.font-size-14 {
+    font-size: 14px;
+}
+
+.font-size-12 {
+    font-size: 12px;
+}
+
+.pagination li a, .dataTables_filter label, .dataTables_length label {
+    font-size: 14px;
+    border-radius: 0;
+}
+
+.dataTables_filter input, .dataTables_length select, .dataTables_info, .page-link {
+    border-radius: 0 !important;
+}
