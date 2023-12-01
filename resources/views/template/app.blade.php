@@ -4,33 +4,31 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>E-Posyandu | @yield('title')</title>
-    
+    <title>E-POSYANDU | @yield('title')</title>
+
     @include('template.partials._style')
 </head>
 
 <body>
-    @include('template.partials._navbar')
+    <div class="herodashboard">
+        @include('template.partials._navbar')
 
-    <div class="hero d-flex justify-content-center align-items-center text-white">
-        <h2 class="font-weight-bold">@yield('title')</h2>
-    </div>
-
-    <div class="bg-light">
-        <div class="container">
-            <nav class="py-2" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                <ol class="breadcrumb mb-0">
-                    @yield('breadcrumb')
-                </ol>
-            </nav>
+        <div class="kemala d-flex justify-content-center align-items-center">
         </div>
-    </div>
+        {{-- <div class="container">
+        <nav class="py-2" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                @yield('breadcrumb')
+            </ol>
+        </nav>
+    </div> --}}
 
-    <div class="container py-5">
-        @yield('content')
-    </div>
+        <div class="container py-4">
+            @yield('content')
+        </div>
 
-    @include('template.partials._footer')
 </body>
+<div class="herodashboard">
+    @include('template.partials._footer')
 
 </html>

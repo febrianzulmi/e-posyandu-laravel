@@ -8,14 +8,14 @@
 @endsection
 
 @section('content')
-    @if(session('error'))
+    @if (session('error'))
         <div class="row">
             <div class="col-lg-12">
                 <div class="alert alert-danger font-size-14 font-weight-bold rounded-0">{{ session('error') }}</div>
             </div>
         </div>
     @endif
-    
+
     <div class="row">
         <div class="col-lg-6">
             <div class="card rounded-0">
@@ -34,7 +34,7 @@
                         </li>
                         <li class="list-group-item justify-content-between d-flex mb-1">
                             <span class="font-size-14 font-weight-bold">Usia</span>
-                            <span class="font-size-14">{{ $anak->usia.' '.$anak->satuan_usia }}</span>
+                            <span class="font-size-14">{{ $anak->usia . ' ' . $anak->satuan_usia }}</span>
                         </li>
                         <li class="list-group-item justify-content-between d-flex mb-1">
                             <span class="font-size-14 font-weight-bold">Jenis Kelamin</span>

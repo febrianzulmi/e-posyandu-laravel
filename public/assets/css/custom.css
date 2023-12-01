@@ -1,27 +1,45 @@
 * {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
+    font-family: 'Bai Jamjuree', sans-serif;;
+    font-weight: 300;
 }
 
-.hero {
-    height: 250px;
-    background: -webkit-linear-gradient(-148deg, #ae0b1a, #d20d48);
-    background-image: url('../img/hero.jpeg');
+.font-nav{
+    font-family: 'Tourney', cursive;
+    font-weight: 300;
+    -webkit-text-fill-color: #dc3545;
+    font-size: 23px
+
+
+}
+
+/* .hero {
+    height: 236px;
+    background-image: url('../img/hero1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+} */
+
+.kemala {
+    height: 251px;
+    background-image: url('../img/kemala.png');
+    background-repeat: no-repeat;
+    background-size: 500px;
+    background-position: center;
+   
 }
+
 
 .font-weight-light {
     font-weight: 300 !important;
 }
 
 .font-weight-bold {
-    font-weight: 600 !important;
+    font-weight: 550 !important;
 }
 
 .font-size-14 {
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .font-size-12 {
@@ -35,4 +53,42 @@
 
 .dataTables_filter input, .dataTables_length select, .dataTables_info, .page-link {
     border-radius: 0 !important;
+}
+/* .heronavbar{
+    background-image: url('../img/hero1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+} */
+/* .herobreadcrumb{
+    background-image: url('../img/hero1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+} */
+.herodashboard{
+    background-image: url('../img/hero1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.animated-text {
+    transition: font-size 0.5s ease;
+}
+
+.animated-text:hover {
+    font-size: 1.5em; /* Sesuaikan ukuran teks sesuai keinginan Anda */
+}
+
+.nav-link { /* Warna teks umum */
+    text-decoration: none; /* Hapus garis bawah dari tautan */
+}
+
+.nav-link.active {
+    background-color: #dc3545; /* Warna latar belakang saat aktif */
+    border-radius: 5px;
+    color: black; /* Warna teks saat aktif */
+    font-weight: bold; /* Ketebalan teks saat aktif */
+    -webkit-text-fill-color: white; /* Ketebalan teks saat aktif */
 }

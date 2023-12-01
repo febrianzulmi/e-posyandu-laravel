@@ -3,7 +3,7 @@
 @section('title', 'Halaman Utama')
 
 @push('styles')
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.12.1/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.12.1/datatables.min.css" />
 @endpush
 
 @section('breadcrumb')
@@ -59,7 +59,7 @@
                             </li>
                             <li class="list-group-item justify-content-between d-flex mb-1">
                                 <span class="font-size-14 font-weight-bold">Usia</span>
-                                <span class="font-size-14">{{ auth()->user()->anak->usia.' Bulan' }}</span>
+                                <span class="font-size-14">{{ auth()->user()->anak->usia . ' Bulan' }}</span>
                             </li>
                             <li class="list-group-item justify-content-between d-flex mb-1">
                                 <span class="font-size-14 font-weight-bold">Jenis Kelamin</span>
@@ -86,9 +86,11 @@
                             <thead>
                                 <tr>
                                     <th class="font-weight-bold">No</th>
-                                    <th class="font-weight-bold">Tgl Penimbangan</th>
+                                    <th class="font-weight-bold">UID</th>
+                                    <th class="font-weight-bold">Tgl pemeriksaan</th>
                                     <th class="font-weight-bold">Berat Badan</th>
                                     <th class="font-weight-bold">Tinggi Badan</th>
+                                    <th class="font-weight-bold">Suhu</th>
                                     <th class="font-weight-bold">Created At</th>
                                 </tr>
                             </thead>
@@ -105,7 +107,10 @@
     <script>
         $(function() {
             const table = $("table").DataTable({
-                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
                 serverSide: true,
                 processing: true,
                 responsive: true,
@@ -113,28 +118,51 @@
                     url: "{{ route('perkembangan-anak.datatable-json') }}",
                     method: 'GET'
                 },
-                columns: [
-                    { data: 'DT_RowIndex', name: 'DT_RowIndex' },
-                    { data: 'tgl_penimbangan', name: 'tgl_penimbangan' },
-                    { data: 'berat_badan', name: 'berat_badan' },
-                    { data: 'tinggi_badan', name: 'tinggi_badan' },
-                    { data: 'created_at', name: 'created_at' }
-                ],
-                columnDefs: [
+                columns: [{
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex'
+                    },
                     {
-                        targets: [0],
+                        data: 'uid',
+                        name: 'uid'
+                    },
+                    {
+                        data: 'tgl_pemeriksaan',
+                        name: 'tgl_pemeriksaan'
+                    },
+                    {
+                        data: 'bb',
+                        name: 'bb'
+                    },
+                    {
+                        data: 'tb',
+                        name: 'tb'
+                    },
+                    {
+                        data: 'suhu',
+                        name: 'suhu'
+                    },
+                    {
+                        data: 'created_at',
+                        name: 'created_at'
+                    }
+                ],
+                columnDefs: [{
+                        targets: [6],
                         orderable: false,
                         searchable: false
                     },
                     {
-                        targets: [4],
+                        targets: [6],
                         visible: false
                     }
                 ],
                 createdRow: function(row, data, dataIndex, cells) {
                     $(row).addClass('font-size-14');
                 },
-                order: [[4, 'desc']]
+                order: [
+                    [4, 'desc']
+                ]
             });
         });
     </script>

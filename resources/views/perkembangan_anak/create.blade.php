@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    @if(session('error'))
+    @if (session('error'))
         <div class="row">
             <div class="col-lg-12">
                 <div class="alert alert-danger font-size-14 font-weight-bold rounded-0">{{ session('error') }}</div>

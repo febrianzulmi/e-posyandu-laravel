@@ -16,15 +16,16 @@ class CreatePerkembanganAnakTable extends Migration
         Schema::create('perkembangan_anak', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('anak_id')->unsigned();
-            $table->date('tgl_penimbangan');
-            $table->double('berat_badan');
-            $table->double('tinggi_badan');
+            $table->string('uid');
+            $table->date('tgl_pemeriksaan');
+            $table->double('bb');
+            $table->double('tb');
+            $table->double('suhu');
             $table->timestamps();
-
             $table->foreign('anak_id')
-                    ->references('id')
-                    ->on('anak')
-                    ->onDelete('cascade');
+                ->references('id')
+                ->on('anak')
+                ->onDelete('cascade');
         });
     }
 

@@ -13,12 +13,14 @@ class PerkembanganAnak extends Model
     protected $table = 'perkembangan_anak';
     protected $fillable = [
         'anak_id',
-        'tgl_penimbangan',
-        'berat_badan',
-        'tinggi_badan'
+        'uid',
+        'tgl_pemeriksaan',
+        'bb',
+        'tb',
+        'suhu'
     ];
     protected $dates = [
-        'tgl_penimbangan'
+        'tgl_pemeriksaan',
     ];
 
     public function anak()

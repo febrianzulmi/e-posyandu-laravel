@@ -26,22 +26,22 @@ class AnakController extends Controller
         $data = Anak::query();
 
         return DataTables::of($data)
-                            ->addIndexColumn()
-                            ->editColumn('tgl_lahir', function($data) {
-                                return $data->created_at->format('d/m/Y');
-                            })
-                            ->editColumn('usia', function($data) {
-                                return $data->usia.' '.$data->satuan_usia;
-                            })
-                            ->addColumn('aksi', function($data) {
-                                return '
-                                    <a href="'.route('anak.edit', $data->id).'" class="btn btn-sm btn-warning rounded-0">Edit</a>
-                                    <a href="'.route('anak.edit.akun', $data->id).'" class="btn btn-sm btn-warning rounded-0">Edit Akun</a>
-                                    <a href="'.route('anak.show', $data->id).'" class="btn btn-sm btn-info rounded-0">Detail</a>
+            ->addIndexColumn()
+            ->editColumn('tgl_lahir', function ($data) {
+                return $data->created_at->format('d/m/Y');
+            })
+            ->editColumn('usia', function ($data) {
+                return $data->usia . ' ' . $data->satuan_usia;
+            })
+            ->addColumn('aksi', function ($data) {
+                return '
+                                    <a href="' . route('anak.edit', $data->id) . '" class="btn btn-sm btn-warning rounded-0">Edit</a>
+                                    <a href="' . route('anak.edit.akun', $data->id) . '" class="btn btn-sm btn-warning rounded-0">Edit Akun</a>
+                                    <a href="' . route('anak.show', $data->id) . '" class="btn btn-sm btn-info rounded-0">Detail</a>
                                 ';
-                            })
-                            ->rawColumns(['aksi'])
-                            ->toJson();
+            })
+            ->rawColumns(['aksi'])
+            ->toJson();
     }
 
     /**
@@ -77,7 +77,7 @@ class AnakController extends Controller
             Anak::create($anak_request);
 
             DB::commit();
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
 
             return redirect()->back()->withInput($request->all())->with('error', 'Data gagal disimpan');
@@ -141,7 +141,7 @@ class AnakController extends Controller
             $anak->user->delete();
 
             DB::commit();
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             DB::rollback();
 
             return redirect()->back()->with('error', 'Data gagal dihapus');
@@ -161,7 +161,7 @@ class AnakController extends Controller
     {
         $password = $anak->user->password;
 
-        if($request->password) {
+        if ($request->password) {
             $password = $request->password;
         }
 

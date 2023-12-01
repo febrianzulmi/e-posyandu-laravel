@@ -22,39 +22,47 @@ class PerkembanganAnakController extends Controller
 
     public function datatableJson(Request $request)
     {
-        $data = PerkembanganAnak::with('anak')->where(function($query) use($request) {
-            if($request->month_filter) {
+        $data = PerkembanganAnak::with('anak')->where(function ($query) use ($request) {
+            if ($request->month_filter) {
                 $month_filter = $request->month_filter;
                 $month_filter = explode('-', $month_filter);
 
-                $query->whereYear('tgl_penimbangan', $month_filter[0])
-                        ->whereMonth('tgl_penimbangan', $month_filter[1]);
+                $query->whereYear('tgl_pemeriksaan', $month_filter[0])
+                    ->whereMonth('tgl_pemeriksaan', $month_filter[1]);
             }
 
-            if(Gate::allows('isUser')) {
+            if (Gate::allows('isUser')) {
                 $query->where('anak_id', '=', auth()->user()->anak->id);
             }
         });
 
         return DataTables::of($data)
-                            ->addIndexColumn()
-                            ->editColumn('tgl_penimbangan', function($data) {
-                                return $data->tgl_penimbangan->format('d/m/Y');
-                            })
-                            ->editColumn('berat_badan', function($data) {
-                                return $data->berat_badan.' KG';
-                            })
-                            ->editColumn('tinggi_badan', function($data) {
-                                return $data->tinggi_badan.' CM';
-                            })
-                            ->addColumn('aksi', function($data) {
-                                return '
-                                    <a href="'.route('perkembangan-anak.edit', $data->id).'" class="btn btn-sm btn-warning rounded-0">Edit</a>
-                                    <button type="button" data-id="'.$data->id.'" class="btn btn-sm btn-danger rounded-0 btn-delete">Hapus</button>
+            ->addIndexColumn()
+            ->editColumn('tgl_pemeriksaan', function ($data) {
+                return $data->tgl_pemeriksaan->format('d/m/Y');
+            })
+            ->editColumn('uid', function ($data) {
+                return $data->uid;
+            })
+            ->editColumn('bb', function ($data) {
+                return $data->bb . ' KG';
+            })
+            ->editColumn('tb', function ($data) {
+                return $data->tb . ' CM';
+            })
+            ->editColumn('suhu', function ($data) {
+                return $data->suhu . ' ºC';
+            })
+
+            ->addColumn('aksi', function ($data) {
+                return '
+                                    <a href="' . route('perkembangan-anak.edit', $data->id) . '" class="btn btn-sm btn-warning rounded-0">Edit</a>
+                                    <button type="button" data-id="' . $data->id . '" class="btn btn-sm btn-danger rounded-0 btn-delete">Hapus</button>
                                 ';
-                            })
-                            ->rawColumns(['aksi'])
-                            ->toJson();
+            })
+
+            ->rawColumns(['aksi'])
+            ->toJson();
     }
 
     /**
